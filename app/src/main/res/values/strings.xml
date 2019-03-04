@@ -1,0 +1,82 @@
+<resources>
+    <string name="app_name">WAW</string>
+    <string name="weather_preferences">weather</string>
+    <string name="notification_title">Подобраны новые рекомендации</string>
+    <string name="notification_text">Зайдите в приложение для просмотра</string>
+    <string name="alarm_on_toast">lalka</string>
+    <string name="alarm_off_toast">lylka</string>
+    <string-array name="categories">
+        <item>Категория</item>
+        <item>Головные уборы</item>
+        <item>Перчатки</item>
+        <item>Шарфы</item>
+        <item>Верхняя одежда</item>
+        <item>Брюки</item>
+        <item>Футболки</item>
+        <item>Обувь</item>
+        <item>Аксессуары</item>
+        <item>Термобелье</item>
+        <item>Кофты</item>
+    </string-array>
+    <string-array name="temperature">
+        <item>Температура</item>
+        <item>Меньше -15°С</item>
+        <item>-15°С — 0°С</item>
+        <item>0°С — 15°С</item>
+        <item>Больше 15°С</item>
+    </string-array>
+    <string-array name="cities">
+        <item>Москва</item>
+        <item>Рыбинск</item>
+    </string-array>
+    <string-array name="lat">
+        <item>55.7522200</item>
+        <item>58.0446000</item>
+    </string-array>
+    <string-array name="lon">
+        <item>37.6155600</item>
+        <item>38.8425900</item>
+    </string-array>
+    
+    <string-array name="conditions">
+        <item>clear</item>
+        <item>partly-cloudy</item>
+        <item>cloudy</item>
+        <item>overcast</item>
+        <item>partly-cloudy-and-light-rain</item>
+        <item>partly-cloudy-and-rain</item>
+        <item>overcast-and-rain</item>
+        <item>overcast-thunderstorms-with-rain</item>
+        <item>cloudy-and-light-rain</item>
+        <item>overcast-and-light-rain</item>
+        <item>cloudy-and-rain</item>
+        <item>overcast-and-wet-snow</item>
+        <item>partly-cloudy-and-light-snow</item>
+        <item>partly-cloudy-and-snow</item>
+        <item>overcast-and-snow</item>
+        <item>cloudy-and-light-snow</item>
+        <item>overcast-and-light-snow</item>
+        <item>cloudy-and-snow</item>
+    </string-array>
+
+    <string-array name="Ru_conditions">
+        <item>ясно</item>
+        <item>малооблачно</item>
+        <item>облачно с прояснениями</item>
+        <item>пасмурно</item>
+        <item>небольшой дождь</item>
+        <item>дождь</item>
+        <item>сильный дождь</item>
+        <item>сильный дождь, гроза</item>
+        <item>небольшой дождь</item>
+        <item>небольшой дождь</item>
+        <item>дождь</item>
+        <item>дождь со снегом</item>
+        <item>небольшой снег</item>
+        <item>снег</item>
+        <item>снегопад</item>
+        <item>небольшой снег</item>
+        <item>небольшой снег</item>
+        <item>снег</item>
+    </string-array>
+</resources>
