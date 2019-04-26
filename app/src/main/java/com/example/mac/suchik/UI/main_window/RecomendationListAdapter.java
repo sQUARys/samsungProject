@@ -22,6 +22,7 @@ public class RecomendationListAdapter extends RecyclerView.Adapter<VH> {
     public RecomendationListAdapter(List<String> data) {
         super();
         mData = data;
+        //gfjhgf
     }
     @Override
     public VH onCreateViewHolder(ViewGroup parent, int viewType) {
