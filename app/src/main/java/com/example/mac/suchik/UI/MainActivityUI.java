@@ -6,6 +6,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
@@ -33,46 +35,29 @@ public class MainActivityUI extends AppCompatActivity implements InternetDialogF
         actionbar.setTitle("WAW");
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this)
 			.build();
+        Fragment selected = new MainWindowFragment();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container,
+                selected).commit();
         ImageLoader.getInstance().init(config);
-//        actionbar.setBackgroundDrawable(getDrawable(R.drawable.backgtoundmusttop));
-//        actionbar.setDisplayShowTitleEnabled (false);
-//        if (!hasConnection(this)) {
-//                (new InternetDialogFragment()).show(getSupportFragmentManager(), "WAW");
-//        }
-//        else if (savedInstanceState == null) {
-            openFragment(MAIN_WINDOW_FRAGMENT);
-//        }
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
     }
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Fragment selectedFragment = new MainWindowFragment();
+                    switch (item.getItemId()) {
+                        case R.id.main_window_btn:
+                            selectedFragment = new MainWindowFragment();
+                         break;
+                    }
+                    getSupportFragmentManager().beginTransaction().replace(R.id.container,
+                            selectedFragment).commit();
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.main_window_btn:
-                openFragment(MAIN_WINDOW_FRAGMENT);
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    public void openFragment(int fragmentId) {
-        Fragment fragment = null;
-        switch (fragmentId) {
-            case MAIN_WINDOW_FRAGMENT:
-            default:
-                fragment = new MainWindowFragment();
-                break;
-        }
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.container, fragment)
-                .commit();
-    }
+                    return true;
+                }
+            };
 
     public static boolean hasConnection(final Context context)
     {
@@ -98,9 +83,6 @@ public class MainActivityUI extends AppCompatActivity implements InternetDialogF
     public void onDialogPositiveClick(DialogFragment dialog) {
         if (!hasConnection(this)) {
             (new InternetDialogFragment()).show(getSupportFragmentManager(), "WAW");
-        }
-        else{
-            openFragment(MAIN_WINDOW_FRAGMENT);
         }
     }
 
