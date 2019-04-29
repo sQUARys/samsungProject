@@ -85,6 +85,7 @@ public class MainActivityUI extends AppCompatActivity implements InternetDialogF
             (new InternetDialogFragment()).show(getSupportFragmentManager(), "WAW");
         }
     }
+   //comment to teat
 
     public void onDialogNegativeClick(DialogFragment dialog) {
         System.exit(0);
