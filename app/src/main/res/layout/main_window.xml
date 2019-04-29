@@ -98,17 +98,6 @@
         android:textColor="#000" />
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/for_recommendation_list"
-        android:layout_width="165dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/date"
-        android:layout_marginStart="10dp"
-        
-        android:layout_marginTop="15dp"
-        android:textColor="#000" />
-
-
     <TextView
         android:id="@+id/now_date"
         android:layout_width="195dp"
