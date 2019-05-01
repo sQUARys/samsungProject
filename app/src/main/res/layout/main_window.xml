@@ -93,15 +93,15 @@
         android:id="@+id/recommendation_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/for_recommendation_list"
+        android:layout_below="@+id/humidity"
         android:layout_marginTop="20dp"
         android:textColor="#000" />
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/for_recommendation_list"
-        android:layout_width="165dp"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:layout_below="@+id/date"
         android:layout_marginStart="10dp"
         
