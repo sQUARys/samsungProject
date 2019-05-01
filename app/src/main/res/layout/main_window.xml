@@ -46,17 +46,17 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_below="@+id/now_date"
-        android:layout_toRightOf="@+id/for_recommendation_list"
+        android:layout_toRightOf="@+id/rv_event"
         android:layerType="software"
         android:src="@drawable/start" />
 
 
     <TextView
         android:id="@+id/temperature"
-        android:layout_width="50dp"
+        android:layout_width="70dp"
         android:layout_height="50dp"
         android:layout_below="@+id/weather_cloud"
-        android:layout_toRightOf="@+id/for_recommendation_list"
+        android:layout_toRightOf="@+id/rv_event"
         android:textAlignment="center"
         android:textColor="#000"
         android:gravity="center"
@@ -65,27 +65,28 @@
 
     <TextView
         android:id="@+id/feels_like"
-        android:layout_width="70dp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_below="@+id/condition"
         android:layout_toRightOf="@+id/feels_like_des"
         android:gravity="center"
         android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="15sp" />
-
+        android:textSize="20sp" />
 
     <TextView
         android:id="@+id/feels_like_des"
-        android:layout_width="75dp"
-        android:layout_height="50dp"
+        android:layout_width="77dp"
+        android:layout_height="55dp"
         android:layout_below="@+id/condition"
+        android:layout_marginLeft="-2dp"
         android:layout_toRightOf="@+id/temperature"
         android:gravity="center"
+
         android:text="Ощущается как:"
         android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="10sp"
+        android:textSize="15sp"
         android:visibility="invisible" />
 
 
@@ -115,7 +116,8 @@
         android:layout_height="34dp"
         android:layout_below="@+id/now_date_des"
 
-        android:layout_toRightOf="@+id/for_recommendation_list"
+        android:layout_marginTop="0dp"
+        android:layout_toRightOf="@+id/rv_event"
         android:text="Сегодня"
         android:textAlignment="center"
         android:textColor="#000"
@@ -128,12 +130,18 @@
         android:layout_height="26dp"
         android:layout_below="@+id/date"
 
-        android:layout_toRightOf="@+id/for_recommendation_list"
+        android:layout_toRightOf="@+id/rv_event"
         android:text="Погода на:"
         android:textAlignment="center"
         android:textColor="#000"
         android:textSize="20sp"
         android:visibility="invisible" />
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="160dp"
+        android:layout_height="250dp"
+        android:id="@+id/rv_event"
+        android:layout_below="@+id/date"
+        />
 
     <TextView
         android:id="@+id/humidity"
@@ -151,6 +159,7 @@
         android:layout_width="105dp"
         android:layout_height="25dp"
         android:layout_below="@+id/temperature"
+        android:layout_marginTop="10dp"
         android:layout_toRightOf="@id/image_pressure"
         android:textColor="#000" />
 
@@ -162,6 +171,7 @@
         android:layout_toRightOf="@+id/weather_cloud"
         android:gravity="center"
         android:textAlignment="center"
+        android:textSize="30sp"
         android:textColor="#000" />
 
 
@@ -178,7 +188,7 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_below="@+id/pressure_mm"
-        android:layout_toRightOf="@id/for_recommendation_list"
+        android:layout_toRightOf="@id/rv_event"
         android:visibility="invisible"
         app:srcCompat="@drawable/windy" />
 
@@ -196,7 +206,7 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_below="@+id/temperature"
-        android:layout_toRightOf="@id/for_recommendation_list"
+        android:layout_toRightOf="@id/rv_event"
         android:visibility="invisible"
         app:srcCompat="@drawable/pressure" />
 
