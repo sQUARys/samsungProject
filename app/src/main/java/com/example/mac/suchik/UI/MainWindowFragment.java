@@ -35,6 +35,7 @@ import com.example.mac.suchik.R;
 import com.example.mac.suchik.Response;
 import com.example.mac.suchik.ResponseType;
 import com.example.mac.suchik.Storage;
+import com.example.mac.suchik.UI.main_window.Adapter_of_events;
 import com.example.mac.suchik.UI.main_window.RecomendationListAdapter;
 import com.example.mac.suchik.WeatherData.Day_short;
 import com.example.mac.suchik.WeatherData.Fact;
@@ -73,7 +74,7 @@ public class MainWindowFragment extends Fragment implements Callbacks, AdapterVi
     private ImageView imageHumdity;
     private ImageView imageWindy;
     private ImageView imagePressure;
-
+    private RecyclerView rv_event;
     private String[] position;
     private ArrayAdapter arrayAdapter;
     private boolean first;
@@ -189,7 +190,9 @@ public class MainWindowFragment extends Fragment implements Callbacks, AdapterVi
         imageHumdity = view.findViewById(R.id.image_humidity);
         imageWindy = view.findViewById(R.id.image_windy);
         imagePressure = view.findViewById(R.id.image_pressure);
+        rv_event = view.findViewById(R.id.rv_event);
         rv_clothes.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        rv_event.setLayoutManager(new LinearLayoutManager(getContext() , LinearLayoutManager.VERTICAL , false));
         rv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         List<String> data = new ArrayList<>();
 
@@ -388,8 +391,11 @@ public class MainWindowFragment extends Fragment implements Callbacks, AdapterVi
                 forecasts.get(0).getParts().getDay_short().setImageIcon(f.getImageIcon());
                 forecasts.get(0).getParts().getDay_short().setCondition(f.getCondition());
                 Weather_Adapter adapter = new Weather_Adapter(forecasts.subList(0 , 8), isF);
+                String[] events = null;
+                Adapter_of_events events_adapter = new Adapter_of_events(events);
                 adapter.setClickListener(this);
                 rv.setAdapter(adapter);
+                rv_event.setAdapter(events_adapter);
                 progressBar.setVisibility(ProgressBar.INVISIBLE);
                 spinnerCity.setVisibility(Spinner.VISIBLE);
                 nowDate.setVisibility(TextView.VISIBLE);
@@ -404,6 +410,7 @@ public class MainWindowFragment extends Fragment implements Callbacks, AdapterVi
                 checkInternetConnection = new CheckInternetConnection(getContext());
                 checkInternetConnection.execute();
                 break;
+
         }
     }
 
