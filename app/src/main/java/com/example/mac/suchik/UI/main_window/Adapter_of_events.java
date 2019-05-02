@@ -31,12 +31,12 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
         ArrayData = data;
     }
     @Override
-    public VH_ForEvents onCreateViewHolder(ViewGroup parent, int viewType) {
+    public VH_ForEvents onCreateViewHolder(ViewGroup parent, int position) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_of_events, parent, false);
         return new VH_ForEvents(view);
     }
 
-    public void onBindViewHolder(final VH_ForEvents holder, final int position) {
+    public void onBindViewHolder(final VH_ForEvents holder, final int position ) {
         RequestAsyncTaskKudago newTask = new RequestAsyncTaskKudago(new AsyncResponseKudago() {
             @Override
             public void processFinish(Response result) {
@@ -49,17 +49,13 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
                 }
                 Gson gson = new Gson();
                 Event posts = gson.fromJson(resultString, Event.class);
-//                posts = gson.fromJson(posts.getResults().get(0), Event.class);
                 arrayResult = posts.getResults();
                  Event[] ArrayOfEvent = new Event[arrayResult.size()];
 
                 for(int i = 0 ; i < arrayResult.size() ; i++){
                     ArrayOfEvent[i] = gson.fromJson(arrayResult.get(i) , Event.class);
-
-//                    Log.d("TRIED " + i , arrayResult.get(i).toString());
-//                    Log.d("Main Activivty  " , ArrayOfEvent[i].getTitle());
-//                    holder.tv_events.setText(ArrayOfEvent[i].getTitle());
                 }
+                holder.tv_events.setText(ArrayOfEvent[position].getTitle());
             }
         });
         newTask.execute();
