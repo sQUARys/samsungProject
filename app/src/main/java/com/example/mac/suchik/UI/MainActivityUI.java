@@ -51,26 +51,26 @@ public class MainActivityUI extends AppCompatActivity implements InternetDialogF
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        //HERE IS A START INQUIRE KUDAGO
-
-        RequestAsyncTaskKudago newTask = new RequestAsyncTaskKudago(new AsyncResponseKudago() {
-            @Override
-            public void processFinish(Response result) {
-                String resultString = "";
-                try{
-                    resultString = result.body().string();
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
-                Gson gson = new Gson();
-                Event posts = gson.fromJson(resultString, Event.class);
-                posts = gson.fromJson(posts.getResults().get(0), Event.class);
-                Log.d(TAG ,   "doInBackground() called with: " +"\n" + posts.getId() + "\n" + posts.getTitle() + "\n" + posts.getSlug() );
-            }
-        });
-        newTask.execute();
-
-        //HERE IS A END INQUIRE KUDAGO
+//        //HERE IS A START INQUIRE KUDAGO
+//
+//        RequestAsyncTaskKudago newTask = new RequestAsyncTaskKudago(new AsyncResponseKudago() {
+//            @Override
+//            public void processFinish(Response result) {
+//                String resultString = "";
+//                try{
+//                    resultString = result.body().string();
+//                }catch (IOException e){
+//                    e.printStackTrace();
+//                }
+//                Gson gson = new Gson();
+//                Event posts = gson.fromJson(resultString, Event.class);
+//                posts = gson.fromJson(posts.getResults().get(0), Event.class);
+//                Log.d(TAG ,      posts.getId() + "\n" + posts.getTitle() + "\n" + posts.getSlug() );
+//            }
+//        });
+//        newTask.execute();
+//
+//        //HERE IS A END INQUIRE KUDAGO
 
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
