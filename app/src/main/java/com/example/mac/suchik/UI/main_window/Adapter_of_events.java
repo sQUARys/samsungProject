@@ -10,6 +10,9 @@ import com.example.mac.suchik.R;
 import com.example.mac.suchik.UI.settings_page.VH;
 import com.example.mac.suchik.WeatherData.Forecasts;
 import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+
+import org.json.JSONArray;
 
 import java.io.IOException;
 import java.util.List;
@@ -21,6 +24,8 @@ import response.kudago.UI.RequestAsyncTaskKudago;
 
 public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
     private String[] ArrayData;
+    public JsonArray arrayResult;
+
     public Adapter_of_events(String[] data) {
         super();
         ArrayData = data;
@@ -31,11 +36,12 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
         return new VH_ForEvents(view);
     }
 
-    public void onBindViewHolder(final VH_ForEvents holder, int position) {
+    public void onBindViewHolder(final VH_ForEvents holder, final int position) {
         RequestAsyncTaskKudago newTask = new RequestAsyncTaskKudago(new AsyncResponseKudago() {
             @Override
             public void processFinish(Response result) {
                 String resultString = "";
+
                 try{
                     resultString = result.body().string();
                 }catch (IOException e){
@@ -43,8 +49,17 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
                 }
                 Gson gson = new Gson();
                 Event posts = gson.fromJson(resultString, Event.class);
-                posts = gson.fromJson(posts.getResults().get(0), Event.class);
-                holder.tv_events.setText(posts.getTitle());
+//                posts = gson.fromJson(posts.getResults().get(0), Event.class);
+                arrayResult = posts.getResults();
+                 Event[] ArrayOfEvent = new Event[arrayResult.size()];
+
+                for(int i = 0 ; i < arrayResult.size() ; i++){
+                    ArrayOfEvent[i] = gson.fromJson(arrayResult.get(i) , Event.class);
+
+//                    Log.d("TRIED " + i , arrayResult.get(i).toString());
+//                    Log.d("Main Activivty  " , ArrayOfEvent[i].getTitle());
+//                    holder.tv_events.setText(ArrayOfEvent[i].getTitle());
+                }
             }
         });
         newTask.execute();
