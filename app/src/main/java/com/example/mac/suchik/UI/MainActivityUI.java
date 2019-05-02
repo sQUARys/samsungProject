@@ -11,19 +11,28 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.example.mac.suchik.InternetDialogFragment;
 import com.example.mac.suchik.R;
 import com.example.mac.suchik.Storage;
+import com.google.gson.Gson;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+
+import java.io.IOException;
+
+import okhttp3.Response;
+import response.kudago.UI.AsyncResponseKudago;
+import response.kudago.UI.Event;
+import response.kudago.UI.RequestAsyncTaskKudago;
 
 public class MainActivityUI extends AppCompatActivity implements InternetDialogFragment.InternetDialogListener {
     public android.support.v7.app.ActionBar actionbar;
 
-    public static final int MAIN_WINDOW_FRAGMENT = 1;
+    public static final String TAG = "СМОТРИ ЧТО ЗДЕСЬ ЕСТЬ ";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +50,28 @@ public class MainActivityUI extends AppCompatActivity implements InternetDialogF
         ImageLoader.getInstance().init(config);
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+        //HERE IS A START INQUIRE KUDAGO
+
+        RequestAsyncTaskKudago newTask = new RequestAsyncTaskKudago(new AsyncResponseKudago() {
+            @Override
+            public void processFinish(Response result) {
+                String resultString = "";
+                try{
+                    resultString = result.body().string();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+                Gson gson = new Gson();
+                Event posts = gson.fromJson(resultString, Event.class);
+                posts = gson.fromJson(posts.getResults().get(0), Event.class);
+                Log.d(TAG ,   "doInBackground() called with: " +"\n" + posts.getId() + "\n" + posts.getTitle() + "\n" + posts.getSlug() );
+            }
+        });
+        newTask.execute();
+
+        //HERE IS A END INQUIRE KUDAGO
+
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
