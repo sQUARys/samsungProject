@@ -46,7 +46,7 @@
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:layout_below="@+id/now_date"
-        android:layout_toRightOf="@+id/rv_event"
+        android:layout_toRightOf="@+id/recommendation_list"
         android:layerType="software"
         android:src="@drawable/start" />
 
@@ -56,7 +56,7 @@
         android:layout_width="70dp"
         android:layout_height="50dp"
         android:layout_below="@+id/weather_cloud"
-        android:layout_toRightOf="@+id/rv_event"
+        android:layout_toRightOf="@+id/recommendation_list"
         android:textAlignment="center"
         android:textColor="#000"
         android:gravity="center"
@@ -92,22 +92,16 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recommendation_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/humidity"
-        android:layout_marginTop="20dp"
+        android:layout_width="160dp"
+        android:layout_height="250dp"
+        android:layout_below="@+id/date"
         android:textColor="#000" />
 
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/for_recommendation_list"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_below="@+id/date"
-        android:layout_marginStart="10dp"
-        
-        android:layout_marginTop="15dp"
-        android:textColor="#000" />
+        android:layout_height="0dp" />
 
 
     <TextView
@@ -117,7 +111,7 @@
         android:layout_below="@+id/now_date_des"
 
         android:layout_marginTop="0dp"
-        android:layout_toRightOf="@+id/rv_event"
+        android:layout_toRightOf="@+id/recommendation_list"
         android:text="Сегодня"
         android:textAlignment="center"
         android:textColor="#000"
@@ -137,10 +131,11 @@
         android:textSize="20sp"
         android:visibility="invisible" />
     <android.support.v7.widget.RecyclerView
-        android:layout_width="160dp"
-        android:layout_height="250dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/humidity"
+        android:layout_marginTop="20dp"
         android:id="@+id/rv_event"
-        android:layout_below="@+id/date"
         />
 
     <TextView
@@ -188,7 +183,7 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_below="@+id/pressure_mm"
-        android:layout_toRightOf="@id/rv_event"
+        android:layout_toRightOf="@id/recommendation_list"
         android:visibility="invisible"
         app:srcCompat="@drawable/windy" />
 
@@ -206,7 +201,7 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_below="@+id/temperature"
-        android:layout_toRightOf="@id/rv_event"
+        android:layout_toRightOf="@id/recommendation_list"
         android:visibility="invisible"
         app:srcCompat="@drawable/pressure" />
 

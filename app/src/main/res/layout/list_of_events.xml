@@ -18,6 +18,5 @@
         android:layout_marginStart="10dp"
         android:id="@+id/textView_events"
         android:layout_toRightOf="@+id/image_event"
-        android:text="Here must be something"
         />
 </RelativeLayout>
