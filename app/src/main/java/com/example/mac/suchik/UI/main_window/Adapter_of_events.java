@@ -37,6 +37,7 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
     }
 
     public void onBindViewHolder(final VH_ForEvents holder, final int position ) {
+
         RequestAsyncTaskKudago newTask = new RequestAsyncTaskKudago(new AsyncResponseKudago() {
             @Override
             public void processFinish(Response result) {
@@ -50,7 +51,7 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
                 Gson gson = new Gson();
                 Event posts = gson.fromJson(resultString, Event.class);
                 arrayResult = posts.getResults();
-                 Event[] ArrayOfEvent = new Event[arrayResult.size()];
+                Event[] ArrayOfEvent = new Event[arrayResult.size()];
 
                 for(int i = 0 ; i < arrayResult.size() ; i++){
                     ArrayOfEvent[i] = gson.fromJson(arrayResult.get(i) , Event.class);
@@ -59,7 +60,6 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
             }
         });
         newTask.execute();
-
     }
 
     @Override

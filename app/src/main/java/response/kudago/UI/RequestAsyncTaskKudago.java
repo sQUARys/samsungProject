@@ -20,7 +20,7 @@ public class RequestAsyncTaskKudago  extends AsyncTask<Void,Void,Response> {
 
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("https://kudago.com/public-api/v1.2/events/")
+                .url("https://kudago.com/public-api/v1.4/lists/?lang=&fields=&expand=&order_by=&text_format=&actual_since=1557187200")
                 .build();
 
         Response response = null;

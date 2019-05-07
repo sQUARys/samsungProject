@@ -8,4 +8,9 @@
         android:icon="@drawable/icon"
         android:title="Main window"
         app:showAsAction="always" />
+    <item
+    android:id="@+id/event_fragment_btn"
+    android:icon="@drawable/icon"
+    android:title="Event"
+    app:showAsAction="always" />
 </menu>

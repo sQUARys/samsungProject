@@ -43,7 +43,7 @@ public class MainActivityUI extends AppCompatActivity implements InternetDialogF
         Storage.getOrCreate(getApplicationContext());
         actionbar.setTitle("WAW");
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this)
-			.build();
+                .build();
         Fragment selected = new MainWindowFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.container,
                 selected).commit();
@@ -51,28 +51,9 @@ public class MainActivityUI extends AppCompatActivity implements InternetDialogF
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-//        //HERE IS A START INQUIRE KUDAGO
-//
-//        RequestAsyncTaskKudago newTask = new RequestAsyncTaskKudago(new AsyncResponseKudago() {
-//            @Override
-//            public void processFinish(Response result) {
-//                String resultString = "";
-//                try{
-//                    resultString = result.body().string();
-//                }catch (IOException e){
-//                    e.printStackTrace();
-//                }
-//                Gson gson = new Gson();
-//                Event posts = gson.fromJson(resultString, Event.class);
-//                posts = gson.fromJson(posts.getResults().get(0), Event.class);
-//                Log.d(TAG ,      posts.getId() + "\n" + posts.getTitle() + "\n" + posts.getSlug() );
-//            }
-//        });
-//        newTask.execute();
-//
-//        //HERE IS A END INQUIRE KUDAGO
 
     }
+
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
@@ -81,7 +62,10 @@ public class MainActivityUI extends AppCompatActivity implements InternetDialogF
                     switch (item.getItemId()) {
                         case R.id.main_window_btn:
                             selectedFragment = new MainWindowFragment();
-                         break;
+                            break;
+                        case R.id.event_fragment_btn:
+                            selectedFragment = new EventListFragment();
+                            break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.container,
                             selectedFragment).commit();
@@ -90,22 +74,18 @@ public class MainActivityUI extends AppCompatActivity implements InternetDialogF
                 }
             };
 
-    public static boolean hasConnection(final Context context)
-    {
-        ConnectivityManager cm = (ConnectivityManager)context.getSystemService(Context.CONNECTIVITY_SERVICE);
+    public static boolean hasConnection(final Context context) {
+        ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI);
-        if (wifiInfo != null && wifiInfo.isConnected())
-        {
+        if (wifiInfo != null && wifiInfo.isConnected()) {
             return true;
         }
         wifiInfo = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-        if (wifiInfo != null && wifiInfo.isConnected())
-        {
+        if (wifiInfo != null && wifiInfo.isConnected()) {
             return true;
         }
         wifiInfo = cm.getActiveNetworkInfo();
-        if (wifiInfo != null && wifiInfo.isConnected())
-        {
+        if (wifiInfo != null && wifiInfo.isConnected()) {
             return true;
         }
         return false;
