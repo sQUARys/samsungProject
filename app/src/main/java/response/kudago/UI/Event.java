@@ -13,7 +13,8 @@ public class Event {
 
     @SerializedName("results")
     private JsonArray results;
-
+    @SerializedName("images")
+    private JsonArray images;
 
     @SerializedName("id")
     private int id;
@@ -21,6 +22,8 @@ public class Event {
     private String title;
     @SerializedName("slug")
     private String slug;
+    @SerializedName("image")
+    private String image;
 
     public Event() {
     }
@@ -42,6 +45,7 @@ public class Event {
 
         return response;
     }
+
     public int getId() {
         return id;
     }
@@ -72,5 +76,21 @@ public class Event {
 
     public void setResults(JsonArray results) {
         this.results = results;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public JsonArray getImages() {
+        return images;
+    }
+
+    public void setImages(JsonArray images) {
+        this.images = images;
     }
 }

@@ -11,6 +11,7 @@ import com.example.mac.suchik.UI.settings_page.VH;
 import com.example.mac.suchik.WeatherData.Forecasts;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 
@@ -25,7 +26,6 @@ import response.kudago.UI.RequestAsyncTaskKudago;
 public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
     private String[] ArrayData;
     public JsonArray arrayResult;
-
     public Adapter_of_events(String[] data) {
         super();
         ArrayData = data;
@@ -52,10 +52,12 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
                 Event posts = gson.fromJson(resultString, Event.class);
                 arrayResult = posts.getResults();
                 Event[] ArrayOfEvent = new Event[arrayResult.size()];
-
-                for(int i = 0 ; i < arrayResult.size() ; i++){
+                Event[] ArrayOfImages = new Event[arrayResult.size()];
+                for(int i = 0 ; i < 8 ; i++){
                     ArrayOfEvent[i] = gson.fromJson(arrayResult.get(i) , Event.class);
+                   ArrayOfImages[i] =gson.fromJson(ArrayOfEvent[i].getImages().get(i) , Event.class);
                 }
+                Picasso.get().load(ArrayOfImages[position].getImage()).into(holder.im_events);
                 holder.tv_events.setText(ArrayOfEvent[position].getTitle());
             }
         });
@@ -64,7 +66,7 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
 
     @Override
     public int getItemCount() {
-        return 10;
+        return 7;
     }
     public void setList(List<String> new_elements){
     }
