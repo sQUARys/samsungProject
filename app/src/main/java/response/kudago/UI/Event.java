@@ -3,6 +3,12 @@ package response.kudago.UI;
 import com.google.gson.JsonArray;
 import com.google.gson.annotations.SerializedName;
 
+import java.io.IOException;
+
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
 public class Event {
 
     @SerializedName("results")
@@ -19,6 +25,23 @@ public class Event {
     public Event() {
     }
 
+    public Response catchTitle(){
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url("https://kudago.com/public-api/v1.4/events/?lang=&fields=title,images&actual_since=1557187200")
+                .build();
+
+        okhttp3.Response response = null;
+
+        try {
+            response = client.newCall(request).execute();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return response;
+    }
     public int getId() {
         return id;
     }

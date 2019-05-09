@@ -18,21 +18,8 @@ public class RequestAsyncTaskKudago  extends AsyncTask<Void,Void,Response> {
     @Override
     protected Response doInBackground(Void... params) {
 
-        OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder()
-                .url("https://kudago.com/public-api/v1.4/events/?lang=&fields=title,images&actual_since=1557187200")
-                .build();
-
-        Response response = null;
-
-        try {
-            response = client.newCall(request).execute();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return response;
+       Event response = new Event();
+        return response.catchTitle();
     }
 
     @Override
