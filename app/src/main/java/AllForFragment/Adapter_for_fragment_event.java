@@ -36,31 +36,12 @@ public class Adapter_for_fragment_event extends RecyclerView.Adapter<VH_for_even
 
     @Override
     public void onBindViewHolder(@NonNull final VH_for_event_fragment holder, final int i) {
-        RequestAsyncTaskKudago newTask = new RequestAsyncTaskKudago(new AsyncResponseKudago() {
-            @Override
-            public void processFinish(Response result) {
-                String resultString = "";
 
-                try{
-                    resultString = result.body().string();
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
-                Gson gson = new Gson();
-                Event posts = gson.fromJson(resultString, Event.class);
-                arrayResult = posts.getResults();
-                Event[] ArrayOfEvent = new Event[arrayResult.size()];
-                for(int i = 0 ; i < 8 ; i++){
-                    ArrayOfEvent[i] = gson.fromJson(arrayResult.get(i) , Event.class);
-                }
-                holder.tv_events.setText(ArrayOfEvent[i].getTitle());
-            }
-        });
-        newTask.execute();
     }
 
     @Override
     public int getItemCount() {
-        return 10;
+
+        return 7;
     }
 }
