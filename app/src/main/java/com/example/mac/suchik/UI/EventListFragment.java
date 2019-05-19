@@ -27,7 +27,7 @@ public class EventListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         rv = view.findViewById(R.id.rv_event_fragment);
         String[] varChar = {"Привет" , "Как дела" , "Я родился" , "Что-то еще" , "Что-то еще", "Что-то еще", "Что-то еще", "Что-то еще", "Что-то еще", "Что-то еще", "Что-то еще"};
-        Adapter_for_fragment_event events_adapter = new Adapter_for_fragment_event(varChar);
+        Adapter_of_events events_adapter = new Adapter_of_events(varChar);
         rv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL , false));
         rv.setAdapter(events_adapter);
         super.onViewCreated(view, savedInstanceState);
