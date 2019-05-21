@@ -75,7 +75,6 @@ public class MainWindowFragment extends Fragment implements Callbacks, AdapterVi
     private ImageView imageHumdity;
     private ImageView imageWindy;
     private ImageView imagePressure;
-    private RecyclerView rv_event;
     private String[] position;
     private ArrayAdapter arrayAdapter;
     private boolean first;
@@ -191,9 +190,7 @@ public class MainWindowFragment extends Fragment implements Callbacks, AdapterVi
         imageHumdity = view.findViewById(R.id.image_humidity);
         imageWindy = view.findViewById(R.id.image_windy);
         imagePressure = view.findViewById(R.id.image_pressure);
-        rv_event = view.findViewById(R.id.rv_event);
         rv_clothes.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        rv_event.setLayoutManager(new LinearLayoutManager(getContext() , LinearLayoutManager.HORIZONTAL, false));
         rv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
         List<String> data = new ArrayList<>();
 
@@ -396,7 +393,6 @@ public class MainWindowFragment extends Fragment implements Callbacks, AdapterVi
                 Adapter_of_events events_adapter = new Adapter_of_events(events);
                 adapter.setClickListener(this);
                 rv.setAdapter(adapter);
-                rv_event.setAdapter(events_adapter);
                 progressBar.setVisibility(ProgressBar.INVISIBLE);
                 spinnerCity.setVisibility(Spinner.VISIBLE);
                 nowDate.setVisibility(TextView.VISIBLE);
