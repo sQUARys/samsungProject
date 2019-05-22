@@ -191,7 +191,7 @@ public class MainWindowFragment extends Fragment implements Callbacks, AdapterVi
         imageWindy = view.findViewById(R.id.image_windy);
         imagePressure = view.findViewById(R.id.image_pressure);
         rv_clothes.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
-        rv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+        rv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         List<String> data = new ArrayList<>();
 
         DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy", Locale.getDefault());

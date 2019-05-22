@@ -14,6 +14,7 @@
         android:id="@+id/city"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginStart="40dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
@@ -44,10 +45,9 @@
 
     <ImageView
         android:id="@+id/weather_cloud"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_below="@+id/now_date"
-        android:layout_toRightOf="@+id/recommendation_list"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_below="@+id/date"
         android:layerType="software"
         android:src="@drawable/start" />
 
@@ -57,7 +57,7 @@
         android:layout_width="70dp"
         android:layout_height="50dp"
         android:layout_below="@+id/weather_cloud"
-        android:layout_toRightOf="@+id/recommendation_list"
+        android:layout_marginStart="25dp"
         android:textAlignment="center"
         android:textColor="#000"
         android:gravity="center"
@@ -66,21 +66,22 @@
 
     <TextView
         android:id="@+id/feels_like"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_below="@+id/condition"
+        android:layout_below="@+id/date"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="5dp"
         android:layout_toRightOf="@+id/feels_like_des"
-        android:gravity="center"
         android:textAlignment="center"
         android:textColor="#000"
         android:textSize="20sp" />
 
     <TextView
         android:id="@+id/feels_like_des"
-        android:layout_width="77dp"
+        android:layout_width="wrap_content"
         android:layout_height="55dp"
-        android:layout_below="@+id/condition"
-        android:layout_marginLeft="-2dp"
+        android:layout_below="@+id/date"
+        android:layout_marginStart="30dp"
         android:layout_toRightOf="@+id/temperature"
         android:gravity="center"
 
@@ -93,9 +94,10 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recommendation_list"
-        android:layout_width="160dp"
-        android:layout_height="230dp"
-        android:layout_below="@+id/date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="80dp"
         android:textColor="#000" />
 
 
@@ -109,72 +111,74 @@
         android:id="@+id/now_date"
         android:layout_width="195dp"
         android:layout_height="34dp"
-        android:layout_below="@+id/now_date_des"
-
-        android:layout_marginTop="0dp"
-        android:layout_toRightOf="@+id/recommendation_list"
+        android:layout_toRightOf="@+id/now_date_des"
+        android:layout_below="@+id/feels_like"
+        android:layout_marginTop="-25dp"
         android:text="Сегодня"
         android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:visibility="invisible" />
 
     <TextView
         android:id="@+id/now_date_des"
-        android:layout_width="195dp"
+        android:layout_width="wrap_content"
         android:layout_height="26dp"
-        android:layout_below="@+id/date"
-
-        android:layout_toRightOf="@+id/rv_event"
+        android:layout_below="@+id/feels_like"
+        android:layout_marginTop="-25dp"
+        android:layout_toRightOf="@+id/temperature"
+        android:layout_marginStart="50dp"
         android:text="Погода на:"
         android:textAlignment="center"
         android:textColor="#000"
         android:textSize="20sp"
         android:visibility="invisible" />
-    <android.support.v7.widget.RecyclerView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/rv_event"
-        />
-
+    <!--влажность-humidity-->
     <TextView
         android:id="@+id/humidity"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:layout_below="@id/feels_like"
-        android:layout_toRightOf="@id/image_humidity"
+        android:layout_below="@id/now_date_des"
+        android:layout_toRightOf="@id/feels_like_des"
         android:gravity="center"
         android:textAlignment="center"
         android:textColor="#000"
         android:textSize="20sp" />
-
+    <!--давление-->
     <TextView
         android:id="@+id/pressure_mm"
-        android:layout_width="105dp"
-        android:layout_height="25dp"
-        android:layout_below="@+id/temperature"
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@id/image_pressure"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/condition"
+        android:layout_below="@+id/windy"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:textSize="20dp"
         android:textColor="#000" />
 
+    <!--состояние на улице(облачно ясно и все такое)-->
     <TextView
         android:id="@+id/condition"
-        android:layout_width="125dp"
-        android:layout_height="70dp"
-        android:layout_below="@+id/now_date"
-        android:layout_toRightOf="@+id/weather_cloud"
+        android:layout_width="120dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/temperature"
         android:gravity="center"
         android:textAlignment="center"
         android:textSize="30sp"
         android:textColor="#000" />
 
+    <!--скорость ветра-->
 
     <TextView
         android:id="@+id/windy"
-        android:layout_width="110dp"
+        android:layout_width="wrap_content"
         android:layout_height="25dp"
-        android:layout_below="@+id/pressure_mm"
-        android:layout_toRightOf="@id/image_windy"
+        android:layout_toLeftOf="@+id/humidity"
+        android:layout_toRightOf="@+id/temperature"
+        android:layout_below="@id/now_date_des"
+        android:layout_marginTop="11dp"
+        android:layout_marginStart="60dp"
+        android:textSize="20dp"
         android:textColor="#000" />
 
     <ImageView
@@ -186,12 +190,13 @@
         android:visibility="invisible"
         app:srcCompat="@drawable/windy" />
 
+    <!--рисунок влажности воздуха-->
     <ImageView
         android:id="@+id/image_humidity"
         android:layout_width="20dp"
         android:layout_height="50dp"
         android:layout_below="@id/feels_like"
-        android:layout_toRightOf="@id/pressure_mm"
+        android:layout_toRightOf="@id/humidity"
         android:visibility="invisible"
         app:srcCompat="@drawable/humidity" />
 
