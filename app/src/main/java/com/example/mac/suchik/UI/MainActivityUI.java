@@ -51,7 +51,6 @@ public class MainActivityUI extends AppCompatActivity implements InternetDialogF
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
