@@ -31,7 +31,7 @@ public class Event {
     public Response catchTitle(){
         OkHttpClient client = new OkHttpClient();
         Request request = new Request.Builder()
-                .url("https://kudago.com/public-api/v1.4/events/?lang=&fields=title,images&actual_since=1557763778")
+                .url("https://kudago.com/public-api/v1.4/events/?lang=&fields=title,images&actual_since=1558685995")
                 .build();
 
         okhttp3.Response response = null;

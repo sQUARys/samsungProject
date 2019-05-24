@@ -57,7 +57,6 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
                    ArrayOfImages[i] =gson.fromJson(ArrayOfEvent[i].getImages().get(i) , Event.class);
                 }
                 Picasso.get().load(ArrayOfImages[position].getImage()).into(holder.im_events);
-
                 holder.tv_events.setText(ArrayOfEvent[position].getTitle());
             }
         });

@@ -81,14 +81,13 @@
         android:layout_width="wrap_content"
         android:layout_height="55dp"
         android:layout_below="@+id/date"
-        android:layout_marginStart="30dp"
-        android:layout_toRightOf="@+id/temperature"
+        android:layout_toRightOf="@+id/weather_cloud"
         android:gravity="center"
-
+        android:layout_marginStart="40dp"
         android:text="Ощущается как:"
         android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="15sp"
+        android:textSize="20sp"
         android:visibility="invisible" />
 
 
@@ -140,6 +139,8 @@
         android:layout_height="50dp"
         android:layout_below="@id/now_date_des"
         android:layout_toRightOf="@id/feels_like_des"
+        android:layout_marginStart="-20dp"
+        android:layout_marginTop="-10dp"
         android:gravity="center"
         android:textAlignment="center"
         android:textColor="#000"
@@ -149,9 +150,9 @@
         android:id="@+id/pressure_mm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/condition"
+        android:layout_toRightOf="@id/weather_cloud"
         android:layout_below="@+id/windy"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="70dp"
         android:layout_marginTop="5dp"
         android:textSize="20dp"
         android:textColor="#000" />
@@ -159,8 +160,9 @@
     <!--состояние на улице(облачно ясно и все такое)-->
     <TextView
         android:id="@+id/condition"
-        android:layout_width="120dp"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
+        android:layout_marginStart="10dp"
         android:layout_below="@+id/temperature"
         android:gravity="center"
         android:textAlignment="center"
@@ -173,11 +175,10 @@
         android:id="@+id/windy"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
-        android:layout_toLeftOf="@+id/humidity"
-        android:layout_toRightOf="@+id/temperature"
+        android:layout_toRightOf="@+id/weather_cloud"
         android:layout_below="@id/now_date_des"
-        android:layout_marginTop="11dp"
-        android:layout_marginStart="60dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="70dp"
         android:textSize="20dp"
         android:textColor="#000" />
 
@@ -204,9 +205,11 @@
         android:id="@+id/image_pressure"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:layout_below="@+id/temperature"
-        android:layout_toRightOf="@id/recommendation_list"
         android:visibility="invisible"
+        android:layout_toRightOf="@id/pressure_mm"
+        android:layout_below="@+id/image_humidity"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="-2dp"
         app:srcCompat="@drawable/pressure" />
 
 
