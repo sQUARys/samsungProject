@@ -52,11 +52,12 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
                 arrayResult = posts.getResults();
                 Event[] ArrayOfEvent = new Event[arrayResult.size()];
                 Event[] ArrayOfImages = new Event[arrayResult.size()];
+
                 for(int i = 0 ; i < 5 ; i++){
                     ArrayOfEvent[i] = gson.fromJson(arrayResult.get(i) , Event.class);
-                   ArrayOfImages[i] =gson.fromJson(ArrayOfEvent[i].getImages().get(i) , Event.class);
+                   ArrayOfImages[i] =gson.fromJson(ArrayOfEvent[i].getImages().get(0) , Event.class);
                 }
-                Picasso.get().load(ArrayOfImages[position].getImage()).into(holder.im_events);
+                    Picasso.get().load(ArrayOfImages[position].getImage()).into(holder.im_events);
                 holder.tv_events.setText(ArrayOfEvent[position].getTitle());
             }
         });
