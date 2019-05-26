@@ -26,12 +26,14 @@ import response.kudago.UI.Event;
 import response.kudago.UI.RequestAsyncTaskKudago;
 
 public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
-    private String[] CategoriesDataEquals;
+    private String[] categoriesEventIfYES;
+    private String[] categoriesEventIfNO;
     public JsonArray arrayResult;
 
-    public Adapter_of_events(String[] data) {
+    public Adapter_of_events(String[] data , String[] dataNo) {
         super();
-        CategoriesDataEquals = data;
+        categoriesEventIfYES = data;
+        categoriesEventIfNO = dataNo;
     }
     @Override
     public VH_ForEvents onCreateViewHolder(ViewGroup parent, int position) {
@@ -65,15 +67,13 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
                     ArrayOfCategories[i] = ArrayOfEvent[i].getCategories()[0];
                 }
                 if (MainActivityUI.ButtonChoice.isFlag()) {
-                    for (int i = 0; i < ArrayOfCategories.length; i++) {
-                        switch (MainActivityUI.ButtonChoice.getAlert()) {
-                            case "Yes":
+                    switch (MainActivityUI.ButtonChoice.getAlert()){
+                        case "Yes":
 
                             break;
-                            case "No":
+                        case "No":
 
-                                break;
-                        }
+                            break;
                     }
                 }
 

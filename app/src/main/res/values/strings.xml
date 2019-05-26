@@ -78,7 +78,7 @@
         <item>небольшой снег</item>
         <item>снег</item>
     </string-array>
-    <string-array name="categoriesEvent">
+    <string-array name="categoriesEventIfYES">
         <item>ball</item>
         <item>business-events</item>
         <item>cinema</item>
@@ -122,5 +122,8 @@
         <item>tour</item>
         <item>yarmarki-razvlecheniya-yarmarki</item>
         <item>yoga</item>
+    </string-array>
+    <string-array name="categoriesEventIfNO">
+
     </string-array>
 </resources>
