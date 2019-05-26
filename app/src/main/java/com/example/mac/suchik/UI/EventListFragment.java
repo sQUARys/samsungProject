@@ -44,7 +44,8 @@ public class EventListFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         rv = view.findViewById(R.id.rv_event_fragment);
         tv = view.findViewById(R.id.text_view_event_list);
-        Adapter_of_events events_adapter = new Adapter_of_events(arrayResult);
+        String[] categoriesForEquals = getResources().getStringArray(R.array.categoriesEvent);
+        Adapter_of_events events_adapter = new Adapter_of_events(categoriesForEquals);
         rv.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL , false));
         rv.setAdapter(events_adapter);
         super.onViewCreated(view, savedInstanceState);
