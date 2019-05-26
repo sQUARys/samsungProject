@@ -66,10 +66,18 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
                     ArrayOfImages[i] = gson.fromJson(ArrayOfEvent[i].getImages().get(0) , Event.class);
                     ArrayOfCategories[i] = ArrayOfEvent[i].getCategories()[0];
                 }
+
                 if (MainActivityUI.ButtonChoice.isFlag()) {
                     switch (MainActivityUI.ButtonChoice.getAlert()){
                         case "Yes":
-
+                            for(int i = 0 ; i < ArrayOfCategories.length ; i++) {
+                                int value = 0;
+                                if (categoriesEventIfYES[i] == ArrayOfCategories[value]) {
+                                    Picasso.get().load(ArrayOfImages[i].getImage()).into(holder.im_events);
+                                    holder.tv_events.setText(ArrayOfEvent[i].getTitle());
+                                    value++;
+                                }
+                            }
                             break;
                         case "No":
 
