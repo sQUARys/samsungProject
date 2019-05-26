@@ -55,6 +55,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
+import response.kudago.UI.Event;
+
 public class MainWindowFragment extends Fragment implements Callbacks, AdapterView.OnItemSelectedListener, Weather_Adapter.ICallBackOnDayChanged {
     public static Storage mStorage;
     private TextView date;
@@ -319,6 +321,7 @@ public class MainWindowFragment extends Fragment implements Callbacks, AdapterVi
         windy.setText(weather.getWind_speed() + " м/c, " + direction.get(weather.getWind_dir()));
 
         humidity.setText(Math.round(weather.getHumidity()) + "%");
+        Event event = new Event();
     }
 
     @Override
@@ -390,7 +393,6 @@ public class MainWindowFragment extends Fragment implements Callbacks, AdapterVi
                 forecasts.get(0).getParts().getDay_short().setCondition(f.getCondition());
                 Weather_Adapter adapter = new Weather_Adapter(forecasts.subList(0 , 8), isF);
                 String[] events = null;
-                Adapter_of_events events_adapter = new Adapter_of_events(events);
                 adapter.setClickListener(this);
                 rv.setAdapter(adapter);
                 progressBar.setVisibility(ProgressBar.INVISIBLE);
