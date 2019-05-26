@@ -1,6 +1,7 @@
 package com.example.mac.suchik.UI;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
@@ -10,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -24,16 +26,19 @@ import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 
 import java.io.IOException;
 
+import AllForFragment.Dialog;
 import okhttp3.Response;
 import response.kudago.UI.AsyncResponseKudago;
 import response.kudago.UI.Event;
 import response.kudago.UI.RequestAsyncTaskKudago;
 
+
+
 public class MainActivityUI extends AppCompatActivity implements InternetDialogFragment.InternetDialogListener {
     public android.support.v7.app.ActionBar actionbar;
-
+    public static final  Dialog ButtonChoice = new Dialog();
     public static final String TAG = "СМОТРИ ЧТО ЗДЕСЬ ЕСТЬ ";
-
+    public boolean flag = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +47,7 @@ public class MainActivityUI extends AppCompatActivity implements InternetDialogF
         actionbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#84B3D5")));//change color of action bar
         Storage.getOrCreate(getApplicationContext());
         actionbar.setTitle("WAW");
+        ButtonChoice.setAlert("Init");
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this)
                 .build();
         Fragment selected = new MainWindowFragment();
@@ -64,6 +70,27 @@ public class MainActivityUI extends AppCompatActivity implements InternetDialogF
                             break;
                         case R.id.event_fragment_btn:
                             selectedFragment = new EventListFragment();
+                            if(flag){
+                                final AlertDialog.Builder alert = new AlertDialog.Builder(MainActivityUI.this);
+                                alert.setTitle("HI");
+
+                                alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        ButtonChoice.setAlert("Yes");
+                                        ButtonChoice.setFlag();
+                                    }
+                                });
+                                alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        ButtonChoice.setAlert("No");
+                                        ButtonChoice.setFlag();
+                                    }
+                                });
+                                alert.create().show();
+                                flag = false;
+                            }
                             break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.container,

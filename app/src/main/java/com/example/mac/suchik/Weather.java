@@ -23,7 +23,7 @@ class Weather {
         Request request = new Request.Builder()
                 .url("https://api.weather.yandex.ru/v1/forecast?" + "lat=" + lat + "&lon=" + lon +
                         "&hours=false&extra=true")
-                .addHeader("X-Yandex-API-Key", "d15e7788-e47b-4104-bf87-09865c334e0f")
+                .addHeader("X-Yandex-API-Key", "dd09b7e8-4078-4f94-9fe9-90cc6f871c25")
                 .build();
         this.request = request;
         this.strResponse = getResponse();

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.mac.suchik.R;
+import com.example.mac.suchik.UI.MainActivityUI;
 import com.example.mac.suchik.UI.settings_page.VH;
 import com.example.mac.suchik.WeatherData.Forecasts;
 import com.google.gson.Gson;
@@ -16,6 +17,7 @@ import com.squareup.picasso.Picasso;
 import org.json.JSONArray;
 
 import java.io.IOException;
+import java.security.acl.LastOwnerException;
 import java.util.List;
 
 import okhttp3.Response;
@@ -37,11 +39,12 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
     }
 
     public void onBindViewHolder(final VH_ForEvents holder, final int position ) {
+
         RequestAsyncTaskKudago newTask = new RequestAsyncTaskKudago(new AsyncResponseKudago() {
             @Override
             public void processFinish(Response result) {
-                String resultString = "";
 
+                String resultString = "";
                 try{
                     resultString = result.body().string();
                 }catch (IOException e){
@@ -52,12 +55,25 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
                 arrayResult = posts.getResults();
                 Event[] ArrayOfEvent = new Event[arrayResult.size()];
                 Event[] ArrayOfImages = new Event[arrayResult.size()];
-
+                String[] ArrayOfCategories = new String[arrayResult.size()];
                 for(int i = 0 ; i < 5 ; i++){
                     ArrayOfEvent[i] = gson.fromJson(arrayResult.get(i) , Event.class);
-                   ArrayOfImages[i] =gson.fromJson(ArrayOfEvent[i].getImages().get(0) , Event.class);
+                    ArrayOfImages[i] = gson.fromJson(ArrayOfEvent[i].getImages().get(0) , Event.class);
+                    ArrayOfCategories[i] = ArrayOfEvent[i].getCategories()[0];
                 }
-                    Picasso.get().load(ArrayOfImages[position].getImage()).into(holder.im_events);
+
+                if (MainActivityUI.ButtonChoice.isFlag()) {
+                    switch (MainActivityUI.ButtonChoice.getAlert()) {
+                        case "Yes":
+                            break;
+                        case "No":
+                            break;
+                            default:
+                                Log.e("LOOOOOK" , "SORRY");
+                    }
+                }
+
+                Picasso.get().load(ArrayOfImages[position].getImage()).into(holder.im_events);
                 holder.tv_events.setText(ArrayOfEvent[position].getTitle());
             }
         });

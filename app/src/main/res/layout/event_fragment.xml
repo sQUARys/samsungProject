@@ -4,8 +4,13 @@
     android:layout_height="match_parent"
     android:id="@+id/event_fragment">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:id="@+id/text_view_event_list"
+        android:layout_height="wrap_content" />
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
+        android:layout_below="@+id/text_view_event_list"
         android:layout_height="match_parent"
         android:id="@+id/rv_event_fragment"></android.support.v7.widget.RecyclerView>
 

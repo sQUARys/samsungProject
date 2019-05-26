@@ -1,5 +1,7 @@
 package response.kudago.UI;
 
+import android.util.Log;
+
 import com.google.gson.JsonArray;
 import com.google.gson.annotations.SerializedName;
 
@@ -15,16 +17,17 @@ public class Event {
     private JsonArray results;
     @SerializedName("images")
     private JsonArray images;
-
+    @SerializedName("categories")
+    private String[] categories;
     @SerializedName("id")
     private int id;
+
     @SerializedName("title")
     private String title;
     @SerializedName("slug")
     private String slug;
     @SerializedName("image")
     private String image;
-
     public Event() {
     }
 
@@ -62,13 +65,6 @@ public class Event {
         this.title = title;
     }
 
-    public String getSlug() {
-        return slug;
-    }
-
-    public void setSlug(String slug) {
-        this.slug = slug;
-    }
 
     public JsonArray getResults() {
         return results;
@@ -92,5 +88,22 @@ public class Event {
 
     public void setImages(JsonArray images) {
         this.images = images;
+    }
+
+    public String getSlug() {
+        return slug;
+    }
+
+    public void setSlug(String slug) {
+        this.slug = slug;
+    }
+
+
+    public String[] getCategories() {
+        return categories;
+    }
+
+    public void setCategories(String[] categories) {
+        this.categories = categories;
     }
 }
