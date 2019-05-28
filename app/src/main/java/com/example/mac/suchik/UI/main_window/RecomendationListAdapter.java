@@ -7,11 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.mac.suchik.Clothe;
 import com.example.mac.suchik.R;
 import com.example.mac.suchik.UI.settings_page.VH;
-import com.example.mac.suchik.UI.settings_page.VH_weather_adapter;
-import com.example.mac.suchik.WeatherData.Forecasts;
 
 import java.util.List;
 
