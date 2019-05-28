@@ -91,12 +91,6 @@ public class Storage implements Callbacks{
                 new Community(mCtx, position, Storage.this).execute();
             }
     }
-
-    public void getClothes(Fact weather) {
-        if (!executed.get("GC")) {
-                executed.put("GC", true);
-        }
-    }
     public void setPosition(String lat, String lon){
         if (lat == null || lon == null){
             onLoad(new Response<>(ResponseType.GEOERROR, null));
@@ -120,50 +114,7 @@ public class Storage implements Callbacks{
         }
     }
 
-    public void saveData(){
-        SharedPreferences.Editor editor = sp.edit();
-        if (response != null){
-            editor.putString("weather", gson.toJson(response));
-            editor.apply();
-        }
-        if (position != null && position[0] != null && position[1] != null)
-        {
-            editor.putString("pos_lat", position[0]);
-            editor.putString("pos_lon", position[1]);
-        }
-    }
 
-    public void getWeatherToday(){
-        if (!executed.get("GT")){
-            if (response == null && !executed.get("GF")){
-                updateWeather(false);
-            } else{
-                if (position != null && position[0] != null && position[1] != null) {
-                    executed.put("GT", true);
-                    onLoad(new Response<>(ResponseType.WTODAY, response.getFact()));
-                    executed.put("GT", false);
-                }
-            }
-        }
-    }
-
-    public void getIconBitmap(String url) {
-
-    }
-
-    public void getWeatherForecasts() {
-        if (! executed.get("GF")){
-            if (response == null && !executed.get("GT")){
-                updateWeather(false);
-            } else{
-                if (position != null && position[0] != null && position[1] != null){
-                    executed.put("GF", true);
-                    onLoad(new Response<>(ResponseType.WFORECASTS, response.getForecasts()));
-                    executed.put("GF", false);
-                }
-            }
-        }
-    }
 
     @Override
     public void onLoad(Response response) {
@@ -203,7 +154,6 @@ public class Storage implements Callbacks{
                 break;
             case ResponseType.WTODAY:
                 this.response = (WeatherData) response.response;
-                getClothes(this.response.getFact());
                 if (type_callback_rels.get(ResponseType.WTODAY) == null)
                     type_callback_rels.put(ResponseType.WTODAY, new ArrayList<Callbacks>());
                 list = type_callback_rels.get(ResponseType.WTODAY);
@@ -243,13 +193,6 @@ public class Storage implements Callbacks{
                 }
                 break;
             case ResponseType.CLOTHES:
-                if (type_callback_rels.get(ResponseType.CLOTHES) == null)
-                    type_callback_rels.put(ResponseType.CLOTHES, new ArrayList<Callbacks>());
-                list = type_callback_rels.get(ResponseType.CLOTHES);
-                for (Callbacks callbacks: list) {
-                    callbacks.onLoad(response);
-                }
-                executed.put("GC", false);
                 break;
             case ResponseType.COMMUNITY:
                 if (type_callback_rels.get(ResponseType.COMMUNITY) == null)

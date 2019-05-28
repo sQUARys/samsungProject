@@ -81,7 +81,6 @@ public class Weather_Adapter extends RecyclerView.Adapter<VH_weather_adapter> {
                     setFeels_like(dayShort.getFeels_like());
                     setWind_dir(dayShort.getWind_dir());
                 }};
-                (Storage.getOrCreate(null)).getClothes(fact);
                 itemClickListener.onDayChanged(fact, mData.get(position).getDate());
             }
         });
