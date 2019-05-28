@@ -26,19 +26,24 @@ import response.kudago.UI.Event;
 import response.kudago.UI.RequestAsyncTaskKudago;
 
 public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
-    private String[] ArrayData;
+    private String[] categoriesEventIfYES;
+    private String[] categoriesEventIfNO;
     public JsonArray arrayResult;
-    public Adapter_of_events(String[] data) {
+
+    public Adapter_of_events(String[] data , String[] dataNo) {
         super();
-        ArrayData = data;
+        categoriesEventIfYES = data;
+        categoriesEventIfNO = dataNo;
     }
     @Override
     public VH_ForEvents onCreateViewHolder(ViewGroup parent, int position) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_of_events, parent, false);
+
         return new VH_ForEvents(view);
     }
 
     public void onBindViewHolder(final VH_ForEvents holder, final int position ) {
+
 
         RequestAsyncTaskKudago newTask = new RequestAsyncTaskKudago(new AsyncResponseKudago() {
             @Override
@@ -63,18 +68,25 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
                 }
 
                 if (MainActivityUI.ButtonChoice.isFlag()) {
-                    switch (MainActivityUI.ButtonChoice.getAlert()) {
+                    switch (MainActivityUI.ButtonChoice.getAlert()){
                         case "Yes":
+//                            for(int i = 0 ; i < ArrayOfCategories.length ; i++) {
+//                                int value = 0;
+//                                if (categoriesEventIfYES[i] == ArrayOfCategories[value]) {
+//                                    Picasso.get().load(ArrayOfImages[i].getImage()).into(holder.im_events);
+//                                    holder.tv_events.setText(ArrayOfEvent[i].getTitle());
+//                                    value++;
+//                                    i = 0;
+//                                }
+//                            }
                             break;
                         case "No":
+
                             break;
-                            default:
-                                Log.e("LOOOOOK" , "SORRY");
                     }
                 }
 
-                Picasso.get().load(ArrayOfImages[position].getImage()).into(holder.im_events);
-                holder.tv_events.setText(ArrayOfEvent[position].getTitle());
+
             }
         });
         newTask.execute();

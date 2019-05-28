@@ -21,7 +21,6 @@ public class Event {
     private String[] categories;
     @SerializedName("id")
     private int id;
-
     @SerializedName("title")
     private String title;
     @SerializedName("slug")

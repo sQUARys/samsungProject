@@ -37,7 +37,6 @@
         <item>37.6155600</item>
         <item>38.8425900</item>
     </string-array>
-    
     <string-array name="conditions">
         <item>clear</item>
         <item>partly-cloudy</item>
@@ -78,5 +77,53 @@
         <item>небольшой снег</item>
         <item>небольшой снег</item>
         <item>снег</item>
+    </string-array>
+    <string-array name="categoriesEventIfYES">
+        <item>ball</item>
+        <item>business-events</item>
+        <item>cinema</item>
+        <item>circus</item>
+        <item>comedy-club</item>
+        <item>concert</item>
+        <item>dance-trainings</item>
+        <item>discount</item>
+        <item>education</item>
+        <item>evening</item>
+        <item>exhibition</item>
+        <item>fashion</item>
+        <item>festival</item>
+        <item>flashmob</item>
+        <item>games</item>
+        <item>global</item>
+        <item>holiday</item>
+        <item>kids</item>
+        <item>kvn</item>
+        <item>magic</item>
+        <item>masquerade</item>
+        <item>meeting</item>
+        <item>night</item>
+        <item>open</item>
+        <item>other</item>
+        <item>party</item>
+        <item>permanent-exhibitions</item>
+        <item>photo</item>
+        <item>presentation</item>
+        <item>quest</item>
+        <item>romance</item>
+        <item>sale</item>
+        <item>shopping</item>
+        <item>show</item>
+        <item>social-activity</item>
+        <item>speed-dating</item>
+        <item>sport</item>
+        <item>stand-up</item>
+        <item>stock</item>
+        <item>theater</item>
+        <item>tour</item>
+        <item>yarmarki-razvlecheniya-yarmarki</item>
+        <item>yoga</item>
+    </string-array>
+    <string-array name="categoriesEventIfNO">
+
     </string-array>
 </resources>

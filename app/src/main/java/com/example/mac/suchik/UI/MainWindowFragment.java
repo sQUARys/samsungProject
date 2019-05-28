@@ -335,7 +335,6 @@ public class MainWindowFragment extends Fragment implements Callbacks, AdapterVi
             case ResponseType.WTODAY:
                 f = (Fact) response.response;
                 onDayChanged(f, today);
-                mStorage.getClothes(f);
                 break;
             case ResponseType.COMMUNITY:
                 final String[] res = (String[]) response.response;
