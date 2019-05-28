@@ -23,8 +23,6 @@ public class Storage implements Callbacks{
     private HashMap<String, Boolean> executed;
 
 
-    private GetClothes getClothes;
-
     private static Storage _instance;
 
 
@@ -97,7 +95,6 @@ public class Storage implements Callbacks{
     public void getClothes(Fact weather) {
         if (!executed.get("GC")) {
                 executed.put("GC", true);
-                new GetClothes(mCtx, Storage.this, weather).execute();
         }
     }
     public void setPosition(String lat, String lon){
