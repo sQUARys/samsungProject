@@ -70,14 +70,15 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
                 if (MainActivityUI.ButtonChoice.isFlag()) {
                     switch (MainActivityUI.ButtonChoice.getAlert()){
                         case "Yes":
-                            for(int i = 0 ; i < ArrayOfCategories.length ; i++) {
-                                int value = 0;
-                                if (categoriesEventIfYES[i] == ArrayOfCategories[value]) {
-                                    Picasso.get().load(ArrayOfImages[i].getImage()).into(holder.im_events);
-                                    holder.tv_events.setText(ArrayOfEvent[i].getTitle());
-                                    value++;
-                                }
-                            }
+//                            for(int i = 0 ; i < ArrayOfCategories.length ; i++) {
+//                                int value = 0;
+//                                if (categoriesEventIfYES[i] == ArrayOfCategories[value]) {
+//                                    Picasso.get().load(ArrayOfImages[i].getImage()).into(holder.im_events);
+//                                    holder.tv_events.setText(ArrayOfEvent[i].getTitle());
+//                                    value++;
+//                                    i = 0;
+//                                }
+//                            }
                             break;
                         case "No":
 
