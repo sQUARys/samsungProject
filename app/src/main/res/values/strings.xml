@@ -79,52 +79,64 @@
         <item>снег</item>
     </string-array>
     <string-array name="categoriesEventIfYES">
-        <item>ball</item>
         <item>business-events</item>
-        <item>cinema</item>
         <item>circus</item>
         <item>comedy-club</item>
         <item>concert</item>
-        <item>dance-trainings</item>
         <item>discount</item>
         <item>education</item>
         <item>evening</item>
         <item>exhibition</item>
-        <item>fashion</item>
         <item>festival</item>
         <item>flashmob</item>
         <item>games</item>
         <item>global</item>
         <item>holiday</item>
         <item>kids</item>
-        <item>kvn</item>
-        <item>magic</item>
         <item>masquerade</item>
         <item>meeting</item>
         <item>night</item>
+        <!--what means night-->
         <item>open</item>
         <item>other</item>
         <item>party</item>
         <item>permanent-exhibitions</item>
         <item>photo</item>
-        <item>presentation</item>
         <item>quest</item>
         <item>romance</item>
-        <item>sale</item>
         <item>shopping</item>
-        <item>show</item>
         <item>social-activity</item>
         <item>speed-dating</item>
         <item>sport</item>
         <item>stand-up</item>
-        <item>stock</item>
-        <item>theater</item>
         <item>tour</item>
         <item>yarmarki-razvlecheniya-yarmarki</item>
         <item>yoga</item>
     </string-array>
     <string-array name="categoriesEventIfNO">
-
-
+        <item>theater</item>
+        <item>cinema</item>
+        <item>education</item>
+        <item>kids</item>
+        <item>stock</item>
+        <item>show</item>
+        <item>comedy-club</item>
+        <item>shopping</item>
+        <item>stand-up</item>
+        <item>ball</item>
+        <item>presentation</item>
+        <item>quest</item>
+        <item>social-activity</item>
+        <item>other</item>
+        <item>games</item>
+        <item>sale</item>
+        <item>business-events</item>
+        <item>discount</item>
+        <item>dance-trainings</item>
+        <item>meeting</item>
+        <item>photo</item>
+        <item>fashion</item>
+        <item>magic</item>
+        <item>kvn</item>
     </string-array>
 </resources>

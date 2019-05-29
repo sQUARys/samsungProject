@@ -20,4 +20,6 @@ public class Dialog {
     public void setFlag() {
         this.flag = true;
     }
+
+
 }

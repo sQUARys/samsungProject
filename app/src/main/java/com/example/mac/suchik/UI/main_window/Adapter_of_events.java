@@ -63,32 +63,32 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
                 Event[] ArrayOfEvent = new Event[arrayResult.size()];
                 Event[] ArrayOfImages = new Event[arrayResult.size()];
                 String[] ArrayOfCategories = new String[arrayResult.size()];
-                for(int i = 0 ; i < 5 ; i++){
+                for(int i = 0 ; i < arrayResult.size(); i++){
                     ArrayOfEvent[i] = gson.fromJson(arrayResult.get(i) , Event.class);
                     ArrayOfImages[i] = gson.fromJson(ArrayOfEvent[i].getImages().get(0) , Event.class);
                     ArrayOfCategories[i] = ArrayOfEvent[i].getCategories()[0];
                 }
-
                 if (MainActivityUI.ButtonChoice.isFlag()) {
                     switch (MainActivityUI.ButtonChoice.getAlert()) {
                         case "Yes":
-
-                                for (int i = 0; i < categoriesEventIfYES.length; i++) {
-                                    int value = 0;
-                                    if (categoriesEventIfYES[i].equals(ArrayOfCategories[value])) {
-                                        //this is working if you tap yes
-                                        Picasso.get().load(ArrayOfImages[position].getImage()).into(holder.im_events);
-                                        holder.tv_events.setText(ArrayOfEvent[position].getTitle());
-                                        value++;
-                                    }
-                                }
+                           for(int i = 0 ; i < ArrayOfCategories.length ; i++){
+                               for(int j = 0 ; j < categoriesEventIfYES.length ; j++){
+                                   if (ArrayOfCategories[i].equals(categoriesEventIfYES[j])) {
+                                       //this is working if you tap yes
+                                           Picasso.get().load(ArrayOfImages[i].getImage()).into(holder.im_events);
+                                           holder.tv_events.setText(ArrayOfEvent[i].getTitle());
+                                   }
+                               }
+                           }
                             break;
                         case "No":
-                            for (int i = 0; i < categoriesEventIfNO.length; i++) {
-                                if (categoriesEventIfNO[i].equals(ArrayOfCategories[i])) {
-                                    //this is working if you tap yes
-                                    Picasso.get().load(ArrayOfImages[position].getImage()).into(holder.im_events);
-                                    holder.tv_events.setText(ArrayOfEvent[position].getTitle());
+                            for(int i = 0 ; i < ArrayOfCategories.length ; i++){
+                                for(int j = 0 ; j < categoriesEventIfNO.length ; j++){
+                                    if (ArrayOfCategories[i].equals(categoriesEventIfNO[j])) {
+                                        //this is working if you tap yes
+                                        Picasso.get().load(ArrayOfImages[i].getImage()).into(holder.im_events);
+                                        holder.tv_events.setText(ArrayOfEvent[i].getTitle());
+                                    }
                                 }
                             }
 
