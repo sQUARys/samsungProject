@@ -32,6 +32,7 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
     private String[] categoriesEventIfNO;
     public JsonArray arrayResult;
 
+
     public Adapter_of_events(String[] data , String[] dataNo) {
         super();
         categoriesEventIfYES = data;
@@ -72,25 +73,20 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
                 if (MainActivityUI.ButtonChoice.isFlag()) {
                     switch (MainActivityUI.ButtonChoice.getAlert()) {
                         case "Yes":
-
-                                for (int i = 0; i < categoriesEventIfYES.length; i++) {
-                                    int value = 0;
-                                    if (categoriesEventIfYES[i].equals(ArrayOfCategories[value])) {
-                                        //this is working if you tap yes
+                            for (int i = 0; i < categoriesEventIfYES.length; i++) {
+                                int value = 0;
+                                int count = 0 ;
+                                if (categoriesEventIfYES[i].equals(ArrayOfCategories[value])) {
                                         Picasso.get().load(ArrayOfImages[position].getImage()).into(holder.im_events);
                                         holder.tv_events.setText(ArrayOfEvent[position].getTitle());
                                         value++;
-                                    }
-                                }
-                            break;
-                        case "No":
-                            for (int i = 0; i < categoriesEventIfNO.length; i++) {
-                                if (categoriesEventIfNO[i].equals(ArrayOfCategories[i])) {
-                                    //this is working if you tap yes
-                                    Picasso.get().load(ArrayOfImages[position].getImage()).into(holder.im_events);
-                                    holder.tv_events.setText(ArrayOfEvent[position].getTitle());
+                                }else count++;
+                                if(count == 43){
+                                    value++;
                                 }
                             }
+                            break;
+                        case "No":
 
                             break;
                     }
