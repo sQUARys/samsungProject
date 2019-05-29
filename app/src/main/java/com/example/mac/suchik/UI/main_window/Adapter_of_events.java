@@ -13,7 +13,6 @@ import com.example.mac.suchik.UI.settings_page.VH;
 import com.example.mac.suchik.WeatherData.Forecasts;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
-import com.nostra13.universalimageloader.utils.L;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -32,7 +31,6 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
     private String[] categoriesEventIfYES;
     private String[] categoriesEventIfNO;
     public JsonArray arrayResult;
-
 
     public Adapter_of_events(String[] data , String[] dataNo) {
         super();
@@ -65,32 +63,34 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
                 Event[] ArrayOfEvent = new Event[arrayResult.size()];
                 Event[] ArrayOfImages = new Event[arrayResult.size()];
                 String[] ArrayOfCategories = new String[arrayResult.size()];
-                for(int i = 0 ; i < 5 ; i++){
+                for(int i = 0 ; i < arrayResult.size(); i++){
                     ArrayOfEvent[i] = gson.fromJson(arrayResult.get(i) , Event.class);
                     ArrayOfImages[i] = gson.fromJson(ArrayOfEvent[i].getImages().get(0) , Event.class);
                     ArrayOfCategories[i] = ArrayOfEvent[i].getCategories()[0];
                 }
-
                 if (MainActivityUI.ButtonChoice.isFlag()) {
                     switch (MainActivityUI.ButtonChoice.getAlert()) {
                         case "Yes":
-                            Dialog forValue = new Dialog();
-                            //value не меняется ни при каком условии
-                            Log.d("It is test of element" , ArrayOfCategories[forValue.getValue()]);
-                            for (int i = 0; i < categoriesEventIfYES.length; i++) {
-                                if (categoriesEventIfYES[i].equals(ArrayOfCategories[forValue.getValue()])) {
-                                    Log.d("TAAAAAAAAAAG" , ArrayOfCategories[forValue.getValue()]);
-                                    Picasso.get().load(ArrayOfImages[position].getImage()).into(holder.im_events);
-                                    holder.tv_events.setText(ArrayOfEvent[position].getTitle());
-                                    forValue.setValue(1);
-                                }
-                                else forValue.setCount(1);
-                                if(forValue.getCount() == 32){
-                                    forValue.setValue(1);
-                                }
-                            }
+                           for(int i = 0 ; i < ArrayOfCategories.length ; i++){
+                               for(int j = 0 ; j < categoriesEventIfYES.length ; j++){
+                                   if (ArrayOfCategories[i].equals(categoriesEventIfYES[j])) {
+                                       //this is working if you tap yes
+                                           Picasso.get().load(ArrayOfImages[i].getImage()).into(holder.im_events);
+                                           holder.tv_events.setText(ArrayOfEvent[i].getTitle());
+                                   }
+                               }
+                           }
                             break;
                         case "No":
+                            for(int i = 0 ; i < ArrayOfCategories.length ; i++){
+                                for(int j = 0 ; j < categoriesEventIfNO.length ; j++){
+                                    if (ArrayOfCategories[i].equals(categoriesEventIfNO[j])) {
+                                        //this is working if you tap yes
+                                        Picasso.get().load(ArrayOfImages[i].getImage()).into(holder.im_events);
+                                        holder.tv_events.setText(ArrayOfEvent[i].getTitle());
+                                    }
+                                }
+                            }
 
                             break;
                     }

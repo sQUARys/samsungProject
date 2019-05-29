@@ -82,6 +82,7 @@
         <item>business-events</item>
         <item>circus</item>
         <item>comedy-club</item>
+        <item>concert</item>
         <item>discount</item>
         <item>education</item>
         <item>evening</item>
@@ -114,9 +115,11 @@
     </string-array>
     <string-array name="categoriesEventIfNO">
         <item>theater</item>
+        <item>cinema</item>
+        <item>education</item>
+        <item>kids</item>
         <item>stock</item>
         <item>show</item>
-        <item>sport</item>
         <item>comedy-club</item>
         <item>shopping</item>
         <item>stand-up</item>
@@ -124,15 +127,11 @@
         <item>presentation</item>
         <item>quest</item>
         <item>social-activity</item>
-        <item>education</item>
-        <item>cinema</item>
         <item>other</item>
         <item>games</item>
         <item>sale</item>
         <item>business-events</item>
-        <item>concert</item>
         <item>discount</item>
-        <item>kids</item>
         <item>dance-trainings</item>
         <item>meeting</item>
         <item>photo</item>
