@@ -13,6 +13,7 @@ import com.example.mac.suchik.UI.settings_page.VH;
 import com.example.mac.suchik.WeatherData.Forecasts;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.nostra13.universalimageloader.utils.L;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -73,16 +74,19 @@ public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
                 if (MainActivityUI.ButtonChoice.isFlag()) {
                     switch (MainActivityUI.ButtonChoice.getAlert()) {
                         case "Yes":
+                            Dialog forValue = new Dialog();
+                            //value не меняется ни при каком условии
+                            Log.d("It is test of element" , ArrayOfCategories[forValue.getValue()]);
                             for (int i = 0; i < categoriesEventIfYES.length; i++) {
-                                int value = 0;
-                                int count = 0 ;
-                                if (categoriesEventIfYES[i].equals(ArrayOfCategories[value])) {
-                                        Picasso.get().load(ArrayOfImages[position].getImage()).into(holder.im_events);
-                                        holder.tv_events.setText(ArrayOfEvent[position].getTitle());
-                                        value++;
-                                }else count++;
-                                if(count == 43){
-                                    value++;
+                                if (categoriesEventIfYES[i].equals(ArrayOfCategories[forValue.getValue()])) {
+                                    Log.d("TAAAAAAAAAAG" , ArrayOfCategories[forValue.getValue()]);
+                                    Picasso.get().load(ArrayOfImages[position].getImage()).into(holder.im_events);
+                                    holder.tv_events.setText(ArrayOfEvent[position].getTitle());
+                                    forValue.setValue(1);
+                                }
+                                else forValue.setCount(1);
+                                if(forValue.getCount() == 32){
+                                    forValue.setValue(1);
                                 }
                             }
                             break;
