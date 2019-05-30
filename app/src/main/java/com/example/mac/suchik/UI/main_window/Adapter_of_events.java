@@ -1,13 +1,16 @@
 package com.example.mac.suchik.UI.main_window;
 
+import android.provider.ContactsContract;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.mac.suchik.R;
+import com.example.mac.suchik.UI.EventListFragment;
 import com.example.mac.suchik.UI.MainActivityUI;
 import com.example.mac.suchik.UI.settings_page.VH;
 import com.example.mac.suchik.WeatherData.Forecasts;
@@ -30,83 +33,36 @@ import response.kudago.UI.RequestAsyncTaskKudago;
 public class Adapter_of_events extends RecyclerView.Adapter<VH_ForEvents> {
     private String[] categoriesEventIfYES;
     private String[] categoriesEventIfNO;
-    public JsonArray arrayResult;
+    private int[] ArrayIfWeFind;
+    private String[] dataToViewAdapter;
+    private String[] dataTitleToViewAdapter;
+    EventListFragment eventListFragment = new EventListFragment();
 
-    public Adapter_of_events(String[] data , String[] dataNo) {
+
+    public Adapter_of_events(String[] data, String[] dataNo , String[] dataToView , String[] dataTitleToView) {
         super();
         categoriesEventIfYES = data;
         categoriesEventIfNO = dataNo;
+        dataToViewAdapter = dataToView;
+        dataTitleToViewAdapter =dataTitleToView;
     }
+
     @Override
     public VH_ForEvents onCreateViewHolder(ViewGroup parent, int position) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_of_events, parent, false);
-
         return new VH_ForEvents(view);
     }
 
-    public void onBindViewHolder(final VH_ForEvents holder, final int position ) {
+    public void onBindViewHolder(final VH_ForEvents holder, final int position) {
+        Picasso.get().load(dataToViewAdapter[position]).into(holder.im_events);
+        holder.tv_events.setText(dataTitleToViewAdapter[position]);
+    }
 
-
-        RequestAsyncTaskKudago newTask = new RequestAsyncTaskKudago(new AsyncResponseKudago() {
             @Override
-            public void processFinish(Response result) {
-
-                String resultString = "";
-                try{
-                    resultString = result.body().string();
-                }catch (IOException e){
-                    e.printStackTrace();
-                }
-                Gson gson = new Gson();
-                Event posts = gson.fromJson(resultString, Event.class);
-                arrayResult = posts.getResults();
-                Event[] ArrayOfEvent = new Event[arrayResult.size()];
-                Event[] ArrayOfImages = new Event[arrayResult.size()];
-                String[] ArrayOfCategories = new String[arrayResult.size()];
-                for(int i = 0 ; i < arrayResult.size(); i++){
-                    ArrayOfEvent[i] = gson.fromJson(arrayResult.get(i) , Event.class);
-                    ArrayOfImages[i] = gson.fromJson(ArrayOfEvent[i].getImages().get(0) , Event.class);
-                    ArrayOfCategories[i] = ArrayOfEvent[i].getCategories()[0];
-                }
-                if (MainActivityUI.ButtonChoice.isFlag()) {
-                    switch (MainActivityUI.ButtonChoice.getAlert()) {
-                        case "Yes":
-                           for(int i = 0 ; i < ArrayOfCategories.length ; i++){
-                               for(int j = 0 ; j < categoriesEventIfYES.length ; j++){
-                                   if (ArrayOfCategories[i].equals(categoriesEventIfYES[j])) {
-                                       //this is working if you tap yes
-                                           Picasso.get().load(ArrayOfImages[i].getImage()).into(holder.im_events);
-                                           holder.tv_events.setText(ArrayOfEvent[i].getTitle());
-                                   }
-                               }
-                           }
-                            break;
-                        case "No":
-                            for(int i = 0 ; i < ArrayOfCategories.length ; i++){
-                                for(int j = 0 ; j < categoriesEventIfNO.length ; j++){
-                                    if (ArrayOfCategories[i].equals(categoriesEventIfNO[j])) {
-                                        //this is working if you tap yes
-                                        Picasso.get().load(ArrayOfImages[i].getImage()).into(holder.im_events);
-                                        holder.tv_events.setText(ArrayOfEvent[i].getTitle());
-                                    }
-                                }
-                            }
-
-                            break;
-                    }
-                }
-
-
+            public int getItemCount () {
+                return dataToViewAdapter.length;
             }
-        });
-        newTask.execute();
-    }
-
-    @Override
-    public int getItemCount() {
-        return 5;
-    }
-    public void setList(List<String> new_elements){
-    }
+            public void setList (List < String > new_elements) {
+            }
 
 }
