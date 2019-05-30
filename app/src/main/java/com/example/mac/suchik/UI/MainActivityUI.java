@@ -76,22 +76,24 @@ public class MainActivityUI extends AppCompatActivity implements InternetDialogF
                             selectedFragment = new EventListFragment();
                             if(flag){
                                 final AlertDialog.Builder alert = new AlertDialog.Builder(MainActivityUI.this);
-                                alert.setTitle("HI");
+                                alert.setTitle("Как вам погода?");
 
-                                alert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                alert.setPositiveButton("", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         ButtonChoice.setAlert("Yes");
                                         ButtonChoice.setFlag();
                                     }
                                 });
-                                alert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                alert.setPositiveButtonIcon(getDrawable(R.drawable.thumbsup));
+                                alert.setNegativeButton("", new DialogInterface.OnClickListener() {
                                     @Override
                                     public void onClick(DialogInterface dialog, int which) {
                                         ButtonChoice.setAlert("No");
                                         ButtonChoice.setFlag();
                                     }
                                 });
+                                alert.setNegativeButtonIcon(getDrawable(R.drawable.thumbsdown));
                                 alert.create().show();
                                 flag = false;
                             }

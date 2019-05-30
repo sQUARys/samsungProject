@@ -181,8 +181,6 @@ public class MainWindowFragment extends Fragment implements Callbacks, AdapterVi
         rv = view.findViewById(R.id.recommendation_list);
         rv_clothes = view.findViewById(R.id.for_recommendation_list);
         date = view.findViewById(R.id.date);
-        nowDate = view.findViewById(R.id.now_date);
-        nowDateDes = view.findViewById(R.id.now_date_des);
         humidity = view.findViewById(R.id.humidity);
         pressure = view.findViewById(R.id.pressure_mm);
         windy = view.findViewById(R.id.windy);
@@ -224,11 +222,9 @@ public class MainWindowFragment extends Fragment implements Callbacks, AdapterVi
     @Override
     public void onDayChanged(Fact weather, String date){
         if (today != null && date.equals(today)){
-            nowDate.setText("Сегодня");
             weather = f;
         }
         else if (today != null){
-            nowDate.setText(parseDate(date));
         }
 
         if (!isF) {
@@ -396,8 +392,6 @@ public class MainWindowFragment extends Fragment implements Callbacks, AdapterVi
                 rv.setAdapter(adapter);
                 progressBar.setVisibility(ProgressBar.INVISIBLE);
                 spinnerCity.setVisibility(Spinner.VISIBLE);
-                nowDate.setVisibility(TextView.VISIBLE);
-                nowDateDes.setVisibility(TextView.VISIBLE);
                 textFeelsLike.setVisibility(TextView.VISIBLE);
                 imagePressure.setVisibility(ImageView.VISIBLE);
                 imageWindy.setVisibility(ImageView.VISIBLE);

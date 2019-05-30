@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UI.MainActivityUI"
-    android:background="@android:color/transparent">
+    android:background="@drawable/backgtoundmusttop">
 
     <FrameLayout
         android:id="@+id/container"
@@ -19,7 +19,9 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#40d3ea">
+        android:background="@android:color/transparent">
+        <!--#07D8FF
+        #35C9F0-->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
