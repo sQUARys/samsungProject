@@ -5,11 +5,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_below="@+id/bottom_navigation"
     tools:context=".UI.MainActivityUI"
     android:background="@drawable/backgtoundmusttop"
     android:clipToPadding="false"
     android:visibility="visible">
-
     <Spinner
         android:id="@+id/city"
         android:layout_width="match_parent"
@@ -45,33 +45,35 @@
 
     <ImageView
         android:id="@+id/weather_cloud"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_below="@+id/date"
+        android:layout_marginStart="10dp"
         android:layerType="software"
         android:src="@drawable/start" />
 
 
     <TextView
         android:id="@+id/temperature"
-        android:layout_width="70dp"
-        android:layout_height="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/weather_cloud"
         android:layout_marginStart="25dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toLeftOf="@+id/now_date"
         android:textAlignment="center"
         android:textColor="#000"
-        android:gravity="center"
-        android:textSize="20sp" />
+        android:textSize="35sp" />
 
 
     <TextView
         android:id="@+id/feels_like"
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:layout_below="@+id/date"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="5dp"
+        android:layout_width="50dp"
+        android:layout_height="25dp"
+        android:layout_below="@+id/now_date"
+        android:layout_marginTop="50dp"
         android:layout_toRightOf="@+id/feels_like_des"
+        android:layout_marginStart="5dp"
         android:textAlignment="center"
         android:textColor="#000"
         android:textSize="20sp" />
@@ -79,11 +81,11 @@
     <TextView
         android:id="@+id/feels_like_des"
         android:layout_width="wrap_content"
-        android:layout_height="55dp"
-        android:layout_below="@+id/date"
-        android:layout_toRightOf="@+id/weather_cloud"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_below="@+id/now_date"
+        android:layout_toRightOf="@+id/temperature"
         android:gravity="center"
-        android:layout_marginStart="40dp"
         android:text="Ощущается как:"
         android:textAlignment="center"
         android:textColor="#000"
@@ -96,7 +98,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="20dp"
         android:textColor="#000" />
 
 
@@ -108,40 +110,39 @@
 
     <TextView
         android:id="@+id/now_date"
-        android:layout_width="195dp"
-        android:layout_height="34dp"
-        android:layout_toRightOf="@+id/now_date_des"
-        android:layout_below="@+id/feels_like"
-        android:layout_marginTop="-25dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/now_date_des"
+        android:layout_toRightOf="@+id/weather_cloud"
         android:text="Сегодня"
+        android:layout_centerInParent="true"
         android:textAlignment="center"
         android:textColor="#000"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:visibility="invisible" />
 
     <TextView
         android:id="@+id/now_date_des"
-        android:layout_width="wrap_content"
-        android:layout_height="26dp"
-        android:layout_below="@+id/feels_like"
-        android:layout_marginTop="-25dp"
-        android:layout_toRightOf="@+id/temperature"
-        android:layout_marginStart="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_toRightOf="@+id/weather_cloud"
+        android:layout_marginTop="60dp"
+        android:layout_marginStart="10dp"
         android:text="Погода на:"
         android:textAlignment="center"
         android:textColor="#000"
+        android:layout_below="@+id/date"
         android:textSize="20sp"
-        android:visibility="invisible" />
+        android:visibility="invisible"/>
     <!--влажность-humidity-->
     <TextView
         android:id="@+id/humidity"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_below="@id/now_date_des"
-        android:layout_toRightOf="@id/feels_like_des"
-        android:layout_marginStart="-20dp"
-        android:layout_marginTop="-10dp"
-        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/feels_like_des"
+        android:layout_toRightOf="@id/image_windy"
+        android:layout_marginTop="3dp"
         android:textAlignment="center"
         android:textColor="#000"
         android:textSize="20sp" />
@@ -152,7 +153,6 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/weather_cloud"
         android:layout_below="@+id/windy"
-        android:layout_marginStart="70dp"
         android:layout_marginTop="5dp"
         android:textSize="20dp"
         android:textColor="#000" />
@@ -161,9 +161,12 @@
     <TextView
         android:id="@+id/condition"
         android:layout_width="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_height="40dp"
-        android:layout_marginStart="10dp"
-        android:layout_below="@+id/temperature"
+        android:layout_marginEnd="5dp"
+        android:layout_toRightOf="@id/weather_cloud"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/date"
         android:gravity="center"
         android:textAlignment="center"
         android:textSize="30sp"
@@ -175,20 +178,20 @@
         android:id="@+id/windy"
         android:layout_width="wrap_content"
         android:layout_height="25dp"
-        android:layout_toRightOf="@+id/weather_cloud"
-        android:layout_below="@id/now_date_des"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="70dp"
+        android:layout_below="@id/feels_like_des"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/temperature"
         android:textSize="20dp"
         android:textColor="#000" />
 
     <ImageView
         android:id="@+id/image_windy"
-        android:layout_width="20dp"
-        android:layout_height="20dp"
-        android:layout_below="@+id/pressure_mm"
-        android:layout_toRightOf="@id/recommendation_list"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/feels_like_des"
+        android:layout_toRightOf="@id/windy"
         android:visibility="invisible"
+        android:layout_marginTop="-5dp"
         app:srcCompat="@drawable/windy" />
 
     <!--рисунок влажности воздуха-->
@@ -198,6 +201,7 @@
         android:layout_height="50dp"
         android:layout_below="@id/feels_like"
         android:layout_toRightOf="@id/humidity"
+        android:layout_marginTop="-5dp"
         android:visibility="invisible"
         app:srcCompat="@drawable/humidity" />
 

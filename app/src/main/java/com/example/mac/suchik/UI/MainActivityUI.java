@@ -1,5 +1,6 @@
 package com.example.mac.suchik.UI;
 
+import android.content.ClipData;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
@@ -13,9 +14,12 @@ import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.view.menu.MenuView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
 import com.example.mac.suchik.InternetDialogFragment;
 import com.example.mac.suchik.R;
@@ -47,6 +51,7 @@ public class MainActivityUI extends AppCompatActivity implements InternetDialogF
         actionbar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#84B3D5")));//change color of action bar
         Storage.getOrCreate(getApplicationContext());
         actionbar.setTitle("WAW");
+        getSupportActionBar().hide();
         ButtonChoice.setAlert("Init");
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this)
                 .build();
@@ -58,7 +63,6 @@ public class MainActivityUI extends AppCompatActivity implements InternetDialogF
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
     }
-
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override
