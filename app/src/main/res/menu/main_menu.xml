@@ -2,15 +2,15 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
-
     <item
         android:id="@+id/main_window_btn"
-        android:icon="@drawable/icon"
-        android:title="Main window"
-        app:showAsAction="always" />
+        android:title="Main"
+        android:icon="@drawable/home"
+        app:showAsAction="ifRoom"/>
     <item
     android:id="@+id/event_fragment_btn"
-    android:icon="@drawable/icon"
+    android:icon="@drawable/personwalking"
     android:title="Event"
     app:showAsAction="always" />
+
 </menu>
